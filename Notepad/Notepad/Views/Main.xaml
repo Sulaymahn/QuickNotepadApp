@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Notepad.Views.Main"
+             BackgroundColor="#E6E6E6">
+    
+    <Grid RowDefinitions="64, 64, *"
+              Margin="16, 0">
+
+        <Grid Grid.Row="0"
+              ColumnDefinitions="*">
+            <Image Grid.Column="0"
+                   Source="NewButton"
+                   x:Name="newButton"
+                   HorizontalOptions="EndAndExpand"
+                   HeightRequest="48"
+                   WidthRequest="48">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="New_Clicked"/>
+                    </Image.GestureRecognizers>
+            </Image>
+            </Grid>
+
+            <Label Grid.Row="1"
+               FontSize="48"
+               TextColor="#303030"
+               FontFamily="bahnschrift"
+               Text="Notes"/>
+
+            <CollectionView Grid.Row="2"
+                            x:Name="collectionView"
+                            VerticalScrollBarVisibility="Never"
+                            SelectionMode="Single"
+                            SelectionChanged="collectionView_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="8"
+                                       Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView Threshold="350">
+                            <SwipeView.RightItems>
+                                <SwipeItems SwipeBehaviorOnInvoked="Close"
+                                            Mode="Execute">
+                                    <SwipeItem Text="Delete"
+                                               BackgroundColor="Crimson"
+                                               CommandParameter="{Binding}"
+                                               Invoked="DeleteItem_Invoked"/>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <Frame BackgroundColor="WhiteSmoke" >
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Title}"
+                                       LineBreakMode="TailTruncation"
+                                       VerticalOptions="Center"
+                                       FontSize="Subtitle"
+                                       FontFamily="bahnschrift"
+                                       TextColor="#303030"/>
+                                </StackLayout>
+                            </Frame>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+</ContentPage>

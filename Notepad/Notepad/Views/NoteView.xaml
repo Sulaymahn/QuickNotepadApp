@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Notepad.Views.NoteView"
+             BackgroundColor="#E6E6E6">
+    <ContentPage.Content>
+        <Grid RowDefinitions="48, 56, *"
+              Margin="16, 8">
+
+            <Image Grid.Row="0"
+                   x:Name="saveButton"
+                   Source="SaveButton"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Save_Clicked"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Entry Grid.Row="1"
+                   x:Name="noteTitle"
+                   FontSize="Large"
+                   Placeholder="Title"
+                   MaxLength="40"
+                   FontFamily="bahnschrift"
+                   Text="{Binding Title}"
+                   TextChanged="noteTitle_TextChanged"/>
+            
+            <Editor Grid.Row="2" 
+                    x:Name="noteTextContent"
+                    Placeholder="Note....."
+                    FontFamily="bahnschrift"
+                    FontSize="Medium"
+                    Text="{Binding Content}">
+                <Editor.Keyboard>
+                    <Keyboard x:FactoryMethod="Create">
+                        <x:Arguments>
+                            <KeyboardFlags>None</KeyboardFlags>
+                        </x:Arguments>
+                    </Keyboard>
+                </Editor.Keyboard>
+            </Editor>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
