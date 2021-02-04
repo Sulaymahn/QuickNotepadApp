@@ -5,9 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Notepad.Views.Main"
+             xmlns:element="clr-namespace:Notepad.Elements"
              BackgroundColor="#E6E6E6">
     
-    <Grid RowDefinitions="64, 64, *"
+    <Grid RowDefinitions="64, 64, 48, *"
               Margin="16, 0">
 
         <Grid Grid.Row="0"
@@ -22,7 +23,7 @@
                         <TapGestureRecognizer Tapped="New_Clicked"/>
                     </Image.GestureRecognizers>
             </Image>
-            </Grid>
+        </Grid>
 
             <Label Grid.Row="1"
                FontSize="48"
@@ -30,7 +31,10 @@
                FontFamily="bahnschrift"
                Text="Notes"/>
 
-            <CollectionView Grid.Row="2"
+        <element:CustomSearchBar Grid.Row="2"
+                                 VerticalOptions="Center"/>
+
+        <CollectionView Grid.Row="3"
                             x:Name="collectionView"
                             VerticalScrollBarVisibility="Never"
                             SelectionMode="Single"
