@@ -7,6 +7,6 @@ namespace Notepad.Elements
 {
     public class CustomSearchBarEntry : Entry
     {
-
+        
     }
 }

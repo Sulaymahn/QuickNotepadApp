@@ -27,6 +27,7 @@ namespace Notepad.Views
             BindingContext = this.note;
             saveButton.IsVisible = false;
             noteTitle.MaxLength = 255;
+            
         }
 
         private async void Save_Clicked(object sender, EventArgs e)
@@ -45,7 +46,14 @@ namespace Notepad.Views
             }
             else
             {
-                saveButton.IsVisible = false;
+                if (!string.IsNullOrWhiteSpace(noteTextContent.Text))
+                {
+                    saveButton.IsVisible = true;
+                }
+                else
+                {
+                    saveButton.IsVisible = false;
+                }
             }
         }
     }

@@ -3,6 +3,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
+using System.Linq;
+
 
 namespace Notepad.Models
 {
@@ -38,11 +40,12 @@ namespace Notepad.Models
 
         public ObservableCollection<Note> GetCollection()
         {
-            var collection = new ObservableCollection<Note>();
 
-            foreach (FileInfo file in directoryInfo.EnumerateFiles())
+            ObservableCollection<Note> collection = new ObservableCollection<Note>();
+
+            foreach (FileInfo file in directoryInfo.GetFiles().OrderBy(p => p.CreationTime).Reverse().ToArray())
             {
-                string content = File.ReadAllText(Path.Combine(file.DirectoryName, file.Name));
+                string content = File.ReadAllText(file.FullName);
                 Note note = JsonConvert.DeserializeObject<Note>(content);
                 collection.Add(note);
             }

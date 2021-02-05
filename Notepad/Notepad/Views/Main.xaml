@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="Notepad.Views.Main"
              xmlns:element="clr-namespace:Notepad.Elements"
-             BackgroundColor="#E6E6E6">
+             BackgroundColor="#e6e6e6">
     
     <Grid RowDefinitions="64, 64, 48, *"
               Margin="16, 0">
@@ -32,7 +32,8 @@
                Text="Notes"/>
 
         <element:CustomSearchBar Grid.Row="2"
-                                 VerticalOptions="Center"/>
+                                 VerticalOptions="Center"
+                                 TextChanged="CustomSearchBar_TextChanged"/>
 
         <CollectionView Grid.Row="3"
                             x:Name="collectionView"
@@ -55,15 +56,19 @@
                                                Invoked="DeleteItem_Invoked"/>
                                 </SwipeItems>
                             </SwipeView.RightItems>
-                            <Frame BackgroundColor="WhiteSmoke" >
-                                <StackLayout Orientation="Horizontal">
+                            <Frame BackgroundColor="WhiteSmoke"
+                                   CornerRadius="20"
+                                   HasShadow="False">
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Date}"
+                                       VerticalOptions="Center"/>
                                     <Label Text="{Binding Title}"
                                        LineBreakMode="TailTruncation"
                                        VerticalOptions="Center"
                                        FontSize="Subtitle"
                                        FontFamily="bahnschrift"
                                        TextColor="#303030"/>
-                                </StackLayout>
+                            </StackLayout>
                             </Frame>
                         </SwipeView>
                     </DataTemplate>

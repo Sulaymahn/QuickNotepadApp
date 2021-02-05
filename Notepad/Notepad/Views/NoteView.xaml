@@ -33,7 +33,8 @@
                     Placeholder="Note....."
                     FontFamily="bahnschrift"
                     FontSize="Medium"
-                    Text="{Binding Content}">
+                    Text="{Binding Content}"
+                    TextChanged="noteTitle_TextChanged">
                 <Editor.Keyboard>
                     <Keyboard x:FactoryMethod="Create">
                         <x:Arguments>

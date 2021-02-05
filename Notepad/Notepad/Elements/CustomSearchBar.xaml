@@ -13,5 +13,7 @@
     <local:CustomSearchBarEntry PlaceholderColor="#b9b9b9"
                                 Placeholder="search note.."
                                 BackgroundColor="Transparent"
-                                FontFamily="bahnschrift"/>
+                                FontFamily="bahnschrift"
+                                TextChanged="myEntry_TextChanged"
+                                x:Name="myEntry"/>
 </Frame>

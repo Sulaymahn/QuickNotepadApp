@@ -12,9 +12,16 @@ namespace Notepad.Elements
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CustomSearchBar : Frame
     {
+        public event EventHandler<TextChangedEventArgs> TextChanged;
         public CustomSearchBar()
         {
             InitializeComponent();
         }
+
+        private void myEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextChanged?.Invoke(myEntry, e);
+        }
+
     }
 }

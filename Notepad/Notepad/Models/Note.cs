@@ -16,6 +16,7 @@ namespace Notepad
         public string Title { get; set; }
         public string Content { get; set; }
         public string ID { get; set; }
+        public string Date { get; set; }
 
         //Constructors
         public Note()
@@ -23,6 +24,7 @@ namespace Notepad
             Title = String.Empty;
             Content = String.Empty;
             ID = NoteId.GenerateCodeID();
+            Date = string.Format("{0:d/M/yyyy}",DateTime.Now.ToString());
         }
     }
 }
