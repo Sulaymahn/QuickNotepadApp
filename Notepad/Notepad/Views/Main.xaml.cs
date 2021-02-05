@@ -1,9 +1,9 @@
 ﻿
 using Notepad.Models;
 using System;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Linq;
 
 namespace Notepad.Views
 {
@@ -30,7 +30,7 @@ namespace Notepad.Views
                 var note = collectionView.SelectedItem as Note;
                 await Navigation.PushModalAsync(new NoteView(note), true);
             }
-
+            
             collectionView.SelectedItem = null;
         }
 
@@ -71,13 +71,13 @@ namespace Notepad.Views
             objA = objA.ToLower();
             objB = objB.ToLower();
             int len = IsShorter(objA, objB);
-            for(int i = 0; i < len; i++)
+            for (int i = 0; i < len; i++)
+            {
+                if (objA[i] != objB[i])
                 {
-                    if(objA[i] != objB[i])
-                    {
-                        return false;
-                    }
+                    return false;
                 }
+            }
 
 
             return true;
@@ -85,7 +85,7 @@ namespace Notepad.Views
 
         private int IsShorter(string a, string b)
         {
-            if(a.Length > b.Length)
+            if (a.Length > b.Length)
             {
                 return b.Length;
             }

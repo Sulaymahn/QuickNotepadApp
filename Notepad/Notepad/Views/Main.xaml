@@ -46,32 +46,42 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <SwipeView Threshold="350">
-                            <SwipeView.RightItems>
-                                <SwipeItems SwipeBehaviorOnInvoked="Close"
+                    <SwipeView Threshold="350">
+                        <SwipeView.RightItems>
+                            <SwipeItems SwipeBehaviorOnInvoked="Close"
                                             Mode="Execute">
-                                    <SwipeItem Text="Delete"
+                                <SwipeItem Text="Delete"
                                                BackgroundColor="Crimson"
                                                CommandParameter="{Binding}"
                                                Invoked="DeleteItem_Invoked"/>
-                                </SwipeItems>
-                            </SwipeView.RightItems>
-                            <Frame BackgroundColor="WhiteSmoke"
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal"/>
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="Transparent"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Frame BackgroundColor="WhiteSmoke"
                                    CornerRadius="20"
                                    HasShadow="False">
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Date}"
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Date}"
                                        VerticalOptions="Center"/>
-                                    <Label Text="{Binding Title}"
+                                <Label Text="{Binding Title}"
                                        LineBreakMode="TailTruncation"
                                        VerticalOptions="Center"
                                        FontSize="Subtitle"
                                        FontFamily="bahnschrift"
                                        TextColor="#303030"/>
                             </StackLayout>
-                            </Frame>
-                        </SwipeView>
-                    </DataTemplate>
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Grid>

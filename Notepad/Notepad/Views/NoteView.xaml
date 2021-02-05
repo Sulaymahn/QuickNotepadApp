@@ -10,15 +10,23 @@
         <Grid RowDefinitions="48, 56, *"
               Margin="16, 8">
 
-            <Image Grid.Row="0"
+            <Grid Grid.Row="0">
+                <Label Grid.Column="0"
+                       Text="{Binding Date}"
+                       FontFamily="bahnschrift"
+                       VerticalOptions="Center"
+                       FontSize="Medium"
+                       TextColor="#303030"/>
+                <Image Grid.Column="1"
                    x:Name="saveButton"
                    Source="SaveButton"
-                   HorizontalOptions="Start"
+                   HorizontalOptions="End"
                    VerticalOptions="Center">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="Save_Clicked"/>
-                </Image.GestureRecognizers>
-            </Image>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Save_Clicked"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
             <Entry Grid.Row="1"
                    x:Name="noteTitle"
                    FontSize="Large"
