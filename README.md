@@ -1,4 +1,4 @@
 # QuickNotepadApp
-###A Simple Notepad App Made With Xamarin Forms
+### A Simple Notepad App Made With Xamarin Forms
 > Contains only an Android Project 
-##Features
+## Features
