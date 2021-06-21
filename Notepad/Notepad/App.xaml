@@ -6,6 +6,9 @@
              mc:Ignorable="d"
              x:Class="Notepad.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Color x:Key="SecondaryColor">#e6e6e6</Color>
+            <Color x:Key="PrimaryColor">#303030</Color>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

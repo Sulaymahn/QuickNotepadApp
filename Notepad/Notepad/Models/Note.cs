@@ -5,13 +5,6 @@ namespace Notepad
 {
     public class Note
     {
-        //Field
-        //private string noteID;
-        //private string title;
-        //private string content;
-        //private DateTime creationDate;
-
-
         //Properties
         public string Title { get; set; }
         public string Content { get; set; }

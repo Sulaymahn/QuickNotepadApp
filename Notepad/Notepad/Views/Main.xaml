@@ -6,83 +6,89 @@
              mc:Ignorable="d"
              x:Class="Notepad.Views.Main"
              xmlns:element="clr-namespace:Notepad.Elements"
-             BackgroundColor="#e6e6e6">
+             BackgroundColor="{StaticResource SecondaryColor}">
     
-    <Grid RowDefinitions="64, 64, 48, *"
-              Margin="16, 0">
+    <Grid>
 
-        <Grid Grid.Row="0"
-              ColumnDefinitions="*">
-            <Image Grid.Column="0"
-                   Source="NewButton"
-                   x:Name="newButton"
-                   HorizontalOptions="EndAndExpand"
-                   HeightRequest="48"
-                   WidthRequest="48">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="New_Clicked"/>
-                    </Image.GestureRecognizers>
-            </Image>
-        </Grid>
-
+        <Grid RowDefinitions="64, 64, 48, *"
+              Margin="8, 0"
+              Grid.Row="0">
             <Label Grid.Row="1"
                FontSize="48"
                TextColor="#303030"
                FontFamily="bahnschrift"
                Text="Notes"/>
-
-        <element:CustomSearchBar Grid.Row="2"
-                                 VerticalOptions="Center"
-                                 TextChanged="CustomSearchBar_TextChanged"/>
-
-        <CollectionView Grid.Row="3"
+            <element:CustomSearchBar Grid.Row="2"
+                                     VerticalOptions="Center"
+                                     CornerRadius="0"
+                                     TextChanged="CustomSearchBar_TextChanged"/>
+            <CollectionView Grid.Row="3"
                             x:Name="collectionView"
                             VerticalScrollBarVisibility="Never"
                             SelectionMode="Single"
                             SelectionChanged="collectionView_SelectionChanged">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="8"
-                                       Orientation="Vertical"/>
+                    <GridItemsLayout Orientation="Vertical"
+                                     HorizontalItemSpacing="4"
+                                     Span="2"
+                                     VerticalItemSpacing="4"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                    <SwipeView Threshold="350">
-                        <SwipeView.RightItems>
-                            <SwipeItems SwipeBehaviorOnInvoked="Close"
+                        <SwipeView Threshold="100">
+                            <SwipeView.RightItems>
+                                <SwipeItems SwipeBehaviorOnInvoked="Close"
                                             Mode="Execute">
-                                <SwipeItem Text="Delete"
+                                    <SwipeItem Text="Delete"
                                                BackgroundColor="Crimson"
                                                CommandParameter="{Binding}"
                                                Invoked="DeleteItem_Invoked"/>
-                            </SwipeItems>
-                        </SwipeView.RightItems>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup Name="CommonStates">
-                                <VisualState Name="Normal"/>
-                                <VisualState Name="Selected">
-                                    <VisualState.Setters>
-                                        <Setter Property="BackgroundColor" Value="Transparent"/>
-                                    </VisualState.Setters>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                        <Frame BackgroundColor="WhiteSmoke"
-                                   CornerRadius="20"
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal"/>
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="Transparent"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Frame BackgroundColor="WhiteSmoke"
+                                   CornerRadius="0"
                                    HasShadow="False">
-                            <StackLayout Orientation="Vertical">
-                                <Label Text="{Binding Date}"
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Date}"
+                                           FontFamily="bahnschrift"
                                        VerticalOptions="Center"/>
-                                <Label Text="{Binding Title}"
+                                    <Label Text="{Binding Title}"
                                        LineBreakMode="TailTruncation"
                                        VerticalOptions="Center"
                                        FontSize="Subtitle"
                                        FontFamily="bahnschrift"
                                        TextColor="#303030"/>
-                            </StackLayout>
-                        </Frame>
-                    </SwipeView>
-                </DataTemplate>
+                                </StackLayout>
+                            </Frame>
+                        </SwipeView>
+                    </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Grid>
+        
+        <Image Grid.Column="0"
+               Grid.Row="0"
+               Margin="16"
+               Source="NewButton"
+               x:Name="newButton"
+               HorizontalOptions="End"
+               VerticalOptions="End"
+               HeightRequest="48"
+               WidthRequest="48">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="New_Clicked"/>
+                </Image.GestureRecognizers>
+        </Image>
+
+    </Grid>
 </ContentPage>
